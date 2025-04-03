@@ -2,15 +2,15 @@
 
     <P>
         <label>Name</label>
-        <input type="text" formControlName="name">
+        <input type="text" formControlName="name"  placeholder="Please enter your name"> {{ nameFormControl.valid | json }}
     </P>
     <P>
         <label>Email</label>
-        <input type="email" formControlName="email">
+        <input type="email" formControlName="email"  placeholder="Please enter your email">
     </P>
     <P>
         <label>Phone Number</label>
-        <input type="number" formControlName="phone">
+        <input type="number" formControlName="phone" placeholder="Please enter your phone number">
     </P>
 
     <button type="button" (click)="onSubmit()">Submit</button>
