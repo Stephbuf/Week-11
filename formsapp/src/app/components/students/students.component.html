@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let student_data of students">
+        {{ student_data.name}}
+        <a [routerLink]="['/student-details', student_data.id]">View</a>
+    </li>
+</ul>

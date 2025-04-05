@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { avoidWord, prohibited } from '../../custom_validations';
 
 @Component({
   selector: 'app-mdf',
@@ -12,9 +13,9 @@ userForm;
 
 constructor(private fb: FormBuilder){
   this.userForm = fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    email: [''],
-    phone: ['']
+    name: ['', [Validators.required, Validators.minLength(3), avoidWord, prohibited(/admin/), prohibited(/peter/)]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['',[Validators.required]]
   });
 }
 
