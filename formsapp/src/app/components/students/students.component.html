@@ -1,6 +1,4 @@
-<ul>
-    <li *ngFor="let student_data of students">
-        {{ student_data.name}}
-        <a [routerLink]="['/student-details', student_data.id]">View</a>
-    </li>
-</ul>
+
+    <div *ngFor="let student_data of students" class="mb-4">
+     <app-student-item [student]="student_data" (deleteStudentEvent)="deleteStudent($event)"></app-student-item>
+    </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Istudent } from '../../interfaces/istudent';
 import { StudentsService } from '../../services/students.service';
 
@@ -8,12 +8,32 @@ import { StudentsService } from '../../services/students.service';
   templateUrl: './students.component.html',
   styleUrl: './students.component.css'
 })
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
 
-  students: Istudent[];
+  students!: Istudent[];
 
   constructor(private studentService: StudentsService) {
-    this.students = studentService.getAllStudents();
+
+  }
+  ngOnInit(): void {
+    this.studentService.getAllStudents().subscribe(result => {
+      this.students = result;
+    });
   }
 
+  deleteStudent(studentId: number) {
+    if (confirm('Are you sure? like really sure?')) {
+      //get the array index of the student
+      let index = this.students.findIndex(stud => stud.id === studentId);
+
+      //delete student from array
+      this.students.splice(index, 1);
+
+      //delete student from database
+      this.studentService.removeStudent(studentId).subscribe(retult => {
+        console.log('Student was deleted successfully.. bye bye');
+      });
+
+    }
+  }
 }
