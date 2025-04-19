@@ -30,7 +30,7 @@ export class StudentsComponent implements OnInit {
       this.students.splice(index, 1);
 
       //delete student from database
-      this.studentService.removeStudent(studentId).subscribe(retult => {
+      this.studentService.removeStudent(studentId).subscribe(result => {
         console.log('Student was deleted successfully.. bye bye');
       });
 

@@ -25,12 +25,5 @@ export class StudentItemComponent implements OnChanges {
   onDelete() {
     this.deleteStudentEvent.emit(this.student.id); // triggering the custom event 
 
-
-
-
-
-
-
-    
   }
 }
